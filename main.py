@@ -65,20 +65,20 @@ class ViabilidadePetroleo(KnowledgeEngine): # KnowledgeEngine comando para herda
     # PERGUNTA 3: Critérios de Qualidade (Específicos por subtipo)
     # ----------------------------------------------------------------
 
-    # Caso 3a: Carbonático -> Porosidade > 15% e Permeabilidade > 10mD
+    # Caso 3a: Carbonático -> Porosidade > 12% e Permeabilidade > 200mD
     @Rule(Fact(tipo_res="convencional"), Fact(subtipo="carbonático")) #se o fato tipo_res for X E o fato subtipo for Y, então faça:
     def criterio_carbonatico(self):
         resp = fazer_pergunta(
-            "A porosidade é > 15% E a permeabilidade é > 10mD?",
+            "A porosidade é > 12% E a permeabilidade é > 200mD?",
             ["sim", "não"]
         )
         self.declare(Fact(criterio_q3=resp))
 
-    # Caso 3b: Silicoclástico -> Porosidade > 25% e Permeabilidade > 100mD
+    # Caso 3b: Silicoclástico -> Porosidade > 20% e Permeabilidade > 100mD
     @Rule(Fact(tipo_res="convencional"), Fact(subtipo="silicoclástico"))
     def criterio_silicoclastico(self):
         resp = fazer_pergunta(
-            "A porosidade é > 25% E a permeabilidade é > 100mD?",
+            "A porosidade é > 20% E a permeabilidade é > 100mD?",
             ["sim", "não"]
         )
         self.declare(Fact(criterio_q3=resp))
